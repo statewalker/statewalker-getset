@@ -28,8 +28,15 @@ describe('set', () => {
   });
 
   function test(path, value, control) {
-    const obj = set({}, path, value);
+    let source = {};
+    let obj = set(source, path, value);
+    expect(source !== obj).to.be(true);
     expect(obj).to.eql(control);
+
+    // source = obj;
+    // obj = set(source, path, value);
+    // expect(source !== obj).to.be(true);
+    // expect(obj).to.eql(control);
   }
 
 })
