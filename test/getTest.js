@@ -53,6 +53,14 @@ describe('get', () => {
     );
   })
 
+  it('should return undefined for non-existing paths', () => {
+    test(
+      { a: { b: { c : 'Hello' } } },
+      'a.b.c.d.1',
+      undefined
+    );
+  })
+
   function test(obj, path, control) {
     const value = get(obj, path);
     expect(value).to.eql(control);
